@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,23 +12,32 @@ namespace BLL
 
         public decimal CalcularPulsacion(String sexo, int edad)
         {
-
+        
             if (sexo.ToUpper().Equals("F"))
             {
-
-                return 220 - edad / 10;
-
+            
+                return (220 - edad) / 10;
+            
             }
             else if (sexo.ToUpper().Equals("M"))
             {
-                return 210 - edad / 10;
+                return (210 - edad) / 10;
             }
             else
             {
-            return 0;
+                return 0;
             }
+        
+        }
 
+        public void Registrar(Persona Perona) 
+        { 
             
+        }
+
+        public void Eliminar(Persona persona)
+        {
+
         }
 
     }
