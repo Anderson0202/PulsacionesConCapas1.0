@@ -35,18 +35,21 @@ namespace Presentacion
 
                 } while (personaService.CalcularPulsacion(sexo, edad) == 0);
 
-                decimal pulsacion = personaService.CalcularPulsacion(sexo, edad);
 
-                Persona persona = new Persona(identificacion, nombre, edad, sexo, pulsacion);
+                Persona persona = new Persona(identificacion, nombre, edad, sexo);
+                persona.Pulsacion = personaService.CalcularPulsacion(sexo, edad);
 
-                Console.WriteLine("\t\t\t\tResultado de su pulsacion");
-                Console.WriteLine("Pulacion :" + persona.Pulsacion);
+                Console.WriteLine("\t\t\t\t_[RESULTADO]_ ");
+                Console.WriteLine("\t\t\n"+persona.Nombre);
+                Console.WriteLine("\t\n Su Pulsacion es :" + persona.Pulsacion);
+                Console.WriteLine($"\n\nOperacion :{personaService.guardar(persona)}");
                 Console.ReadKey();
 
-                Console.WriteLine("\t\t\t\t\nSi desea Continuar Presione la tecla [_S_]");
+                Console.WriteLine("\t\t\t\t\n\nSi desea Continuar Presione la tecla [_S_]");
                 Console.WriteLine("\t\t\t\t\n\nPresione cualquier tecla para Salir [__]");
                 seguir = Console.ReadLine();
                 Console.Clear();
+
 
             } while (seguir.ToUpper().Equals("S"));
 

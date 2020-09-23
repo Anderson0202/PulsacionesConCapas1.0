@@ -1,4 +1,5 @@
-﻿using Entity;
+﻿using DAL;
+using Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace BLL
 {
     public class PersonaService
     {
+        private PersonaRepository personaRepository;
+
+        public PersonaService()
+        {
+            personaRepository = new PersonaRepository();
+        }
 
         public decimal CalcularPulsacion(String sexo, int edad)
         {
@@ -30,8 +37,20 @@ namespace BLL
         
         }
 
-        public void Registrar(Persona Perona) 
-        { 
+
+        public string guardar(Persona persona) 
+        {
+
+            try
+            {
+                personaRepository.Guardar(persona);
+                return " Guardamos un registro de su pulsacion";
+            }
+            catch (Exception exception)
+            {
+
+                return " Error de la aplicacion : " + exception.Message;
+            }
             
         }
 

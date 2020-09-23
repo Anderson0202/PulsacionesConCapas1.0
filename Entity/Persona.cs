@@ -14,13 +14,12 @@ namespace Entity
         public String Sexo { get; set; }
         public decimal Pulsacion { get; set; }
 
-        public Persona(string identificacion, string nombre, int edad, string sexo, decimal pulsacion)
+        public Persona(string identificacion, string nombre, int edad, string sexo)
         {
             Identificacion = identificacion;
             Nombre = nombre;
             Edad = edad;
             Sexo = sexo;
-            Pulsacion = pulsacion;
         }
 
         public Persona()
