@@ -96,6 +96,55 @@ namespace BLL
 
         }
 
+        public ConsultaPersonaResponse ConsultarTodaLaLista()
+        {
+
+            try
+            {
+
+                List<Persona> ListaDePersonas = personaRepository.ConsultarTodaLaLista();
+                if (ListaDePersonas != null)
+                {
+                    return new ConsultaPersonaResponse(ListaDePersonas);
+                }
+                else
+                {
+                    return new ConsultaPersonaResponse("La Persona No ha sido Registrada previamente");
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                return new ConsultaPersonaResponse("Algo salio Mal: Error " + e.Message);
+            }
+
+        }
+
+        public ConsultaPersonaResponse ConsultarPorSexo(string sexo)
+        {
+
+            try
+            {
+
+                List<Persona> ListadePersonas = personaRepository.FiltrarSexo(sexo);
+                if (ListadePersonas != null)
+                {
+                    return new ConsultaPersonaResponse(ListadePersonas);
+                }
+                else
+                {
+                    return new ConsultaPersonaResponse("No se encuentran personas con este sexo");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return new ConsultaPersonaResponse("Algo salio Mal: Error " + e.Message);
+            }
+
+        }
+
     }
 
 

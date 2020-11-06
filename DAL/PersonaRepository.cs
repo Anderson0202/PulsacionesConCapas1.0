@@ -171,8 +171,12 @@ namespace DAL
         public List<Persona> FiltrarFemenino()
         {
 
-            List<Persona> personas = ConsultarTodaLaLista();
-            return personas.Where(p => p.Edad > 5 && p.Edad < 10).ToList();
+            List<Persona> ListaDePersonas = ConsultarTodaLaLista();
+            List<Persona> personasFiltradas =
+                (from persona in ListaDePersonas
+                 where persona.Sexo.Equals("F")
+                 select persona).ToList();
+            return personasFiltradas;
         }
 
         public int ContarSexo(string sexo)
@@ -180,7 +184,7 @@ namespace DAL
             return ConsultarTodaLaLista().Count(p => p.Sexo.Equals(sexo));
         }
 
-        public List<Persona> FiltrarNombres(string nombre)
+        public List<Persona> FiltrarPorNombres(string nombre)
         {
             return ConsultarTodaLaLista().Where(prsn => prsn.Nombre.Contains(nombre)).ToList();
         }

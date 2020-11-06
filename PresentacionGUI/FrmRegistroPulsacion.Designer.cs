@@ -1,6 +1,6 @@
 ﻿namespace PresentacionGUI
 {
-    partial class Form1
+    partial class FrmRegistroPulsacion
     {
         /// <summary>
         /// Variable del diseñador necesaria.
